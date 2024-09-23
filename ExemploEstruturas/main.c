@@ -36,6 +36,6 @@ int main(){
     printf("Telefone: %s\n", lista[1].telefone);
     printf("Matricula: %d\n", lista[1].matricula);
 
-    //printf("%s %d %s", lista[0]);
+
     return 0;
 }
