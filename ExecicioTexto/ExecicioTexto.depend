@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1727113283 source:c:\users\aluno\documents\fernando\execiciotexto\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+
