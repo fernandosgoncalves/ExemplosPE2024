@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1727720696 source:c:\users\aluno\documents\fernando\exemplospe2024\exemplofarmaciaestruturas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"venda.h"
+
+1727720490 c:\users\aluno\documents\fernando\exemplospe2024\exemplofarmaciaestruturas\venda.h
+	<stdio.h>
+	"Medicamento.h"
+
+1727720713 c:\users\aluno\documents\fernando\exemplospe2024\exemplofarmaciaestruturas\medicamento.h
+	<stdio.h>
+
+1727720438 source:c:\users\aluno\documents\fernando\exemplospe2024\exemplofarmaciaestruturas\venda.c
+	"venda.h"
+

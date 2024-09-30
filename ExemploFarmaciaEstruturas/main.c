@@ -1,37 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-
-typedef struct{
-    int codigo;
-    char descricao[30];
-    int quant;
-    float valor_un;
-    int status;
-} MEDICAMENTO;
-
-typedef struct{
-    int codigo;
-    char cliente[30];
-    int medCodigo;
-    int quant;
-    float valor;
-    int status;
-} VENDA;
+#include "venda.h"
 
 int mostraMenu();
-MEDICAMENTO cadastraMedicamento();
-void mostraMedicamento(MEDICAMENTO aux);
-MEDICAMENTO editaMedicamento(MEDICAMENTO aux);
-int pesquisaCodigo(MEDICAMENTO lista[15], int codigo);
-void listaMedicamentos(MEDICAMENTO lista[15]);
-int buscaPosicao(MEDICAMENTO lista[15]);
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
     MEDICAMENTO medicamentos[15];
     VENDA vendas[20];
-    int menu =0, totalDados =0;
+    int menu =0, totalDados =0, totalDadosV= 0;
     int auxCode = -1;
 
     while(menu != 9){
@@ -41,7 +19,6 @@ int main(){
         case 1:
             //Inserir medicamento
             auxCode =  buscaPosicao(medicamentos);
-            printf("%d", auxCode);
             if(auxCode != -1){
                 medicamentos[auxCode] = cadastraMedicamento();
                 totalDados++;
@@ -78,8 +55,54 @@ int main(){
                 printf("Dados Excluidos com Sucesso!\n");
             }
         break;
+        case 4:
+            //Inserir Venda
+            auxCode =  buscaPosicaoV(vendas);
+            if(auxCode != -1){
+                vendas[auxCode] = cadastraVenda(medicamentos);
+                totalDadosV++;
+                printf("Dados Inseridos com Sucesso!\n");
+            }else
+                printf("Lista Cheia!\n");
+        break;
+        case 5:
+            //Editar Venda
+            printf("Informe o código que deseja editar:");
+            scanf("%d", &auxCode);
+
+            auxCode = pesquisaCodigoV(vendas, auxCode);
+
+            if(auxCode == -1)
+                printf("Posicao inválida!\n");
+            else{
+                vendas[auxCode] = editaVenda(vendas[auxCode], medicamentos);
+                printf("Dados Editados com Sucesso!\n");
+            }
+        break;
+        case 6:
+            //Excluir Venda
+            printf("Informe o código que deseja excluir:");
+            scanf("%d", &auxCode);
+
+            auxCode = pesquisaCodigoV(vendas, auxCode);
+
+            if(auxCode == -1)
+                printf("Posicao inválida ou vazia!\n");
+            else{
+                vendas[auxCode].status = 0;
+                totalDadosV--;
+                printf("Dados Excluidos com Sucesso!\n");
+            }
+        break;
+        case 7:
+            //Listar Vendas
+            listaVendas(vendas, medicamentos);
+        break;
         case 8:
             listaMedicamentos(medicamentos);
+        break;
+        case 9:
+            printf("Finalizando o Sistema\n");
         break;
         default:
             printf("Opção Inválida!\n");
@@ -107,70 +130,4 @@ int mostraMenu(){
     scanf("%d", &menu);
 
     return menu;
-}
-
-MEDICAMENTO cadastraMedicamento(){
-    MEDICAMENTO aux;
-    printf("Informe o codigo: ");
-    scanf("%d", &aux.codigo);
-    printf("Informe a descricao: ");
-    fflush(stdin);
-    fgets(aux.descricao, sizeof(aux.descricao), stdin);
-    aux.descricao[strlen(aux.descricao)-1] = '\0';
-    printf("Informe a quantidade: ");
-    scanf("%d", &aux.quant);
-    printf("Informe o valor: ");
-    scanf("%f", &aux.valor_un);
-    aux.status = 1;
-    return aux;
-}
-
-void mostraMedicamento(MEDICAMENTO aux){
-    printf("Cód: %d\n", aux.codigo);
-    printf("Desc: %s\n", aux.descricao);
-    printf("Quant: %d\n", aux.quant);
-    printf("Valor Un: %.2f\n", aux.valor_un);
-    printf("Valor Total: %.2f\n", aux.valor_un * aux.quant);
-    printf("Status: %d\n", aux.status);
-}
-
-MEDICAMENTO editaMedicamento(MEDICAMENTO aux){
-    printf("Codigo Atual: %d\n", aux.codigo);
-    printf("Informe o novo codigo: ");
-    scanf("%d", &aux.codigo);
-    printf("Descrição Atual: %s\n", aux.descricao);
-    printf("Informe a nova descricao: ");
-    fflush(stdin);
-    fgets(aux.descricao, sizeof(aux.descricao), stdin);
-    aux.descricao[strlen(aux.descricao)-1] = '\0';
-    printf("Quantidade Atual: %d\n", aux.quant);
-    printf("Informe a nova quantidade: ");
-    scanf("%d", &aux.quant);
-    printf("Valor Atual: %.2f\n", aux.valor_un);
-    printf("Informe o novo valor: ");
-    scanf("%f", &aux.valor_un);
-    return aux;
-}
-
-int pesquisaCodigo(MEDICAMENTO lista[15], int codigo){
-    for(int i = 0; i<strlen(lista); i++){
-        if(lista[i].codigo == codigo && lista[i].status == 1)
-            return i;
-    }
-    return -1;
-}
-
-void listaMedicamentos(MEDICAMENTO lista[15]){
-    for(int i=0; i< 15; i++){
-        if(lista[i].status == 1)
-            mostraMedicamento(lista[i]);
-    }
-}
-
-int buscaPosicao(MEDICAMENTO lista[15]){
-    for(int i=0; i< 15; i++){
-        if(lista[i].status == 0 || lista[i].status == NULL)
-            return i;
-    }
-    return -1;
 }
