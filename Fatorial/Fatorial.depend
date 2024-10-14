@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1728928838 source:c:\users\aluno\documents\fernando\exemplospe2024\fatorial\main.c
+	<stdio.h>
+	<stdlib.h>
+

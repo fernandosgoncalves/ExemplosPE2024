@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1728927475 source:c:\users\aluno\documents\fernando\exemplospe2024\argcargv\main.c
+	<stdio.h>
+	<stdlib.h>
+

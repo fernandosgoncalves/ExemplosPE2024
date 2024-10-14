@@ -28,8 +28,6 @@ int main(){
     //sensor = verificaStatusSensor();
     sensor = 99;
 
-    MANUT = 30;
-
     switch(sensor){
         case ATIVO:
             printf("O sensor esta funcionando!\n");
