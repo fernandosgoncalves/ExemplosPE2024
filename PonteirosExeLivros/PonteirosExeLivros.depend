@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1729542530 source:c:\users\aluno\documents\fernando\exemplospe2024\ponteirosexelivros\main.c
+	<stdio.h>
+	<stdlib.h>
+	"livro.h"
+
+1729542275 c:\users\aluno\documents\fernando\exemplospe2024\ponteirosexelivros\livro.h
+
+1729542264 source:c:\users\aluno\documents\fernando\exemplospe2024\ponteirosexelivros\livro.c
+	"livro.h"
+
