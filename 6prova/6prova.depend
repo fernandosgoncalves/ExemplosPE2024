@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1731956627 source:c:\users\aluno\documents\fernando\exemplospe2024\6prova\main.c
+	<stdlib.h>
+	"sensor.h"
+
+1731957324 c:\users\aluno\documents\fernando\exemplospe2024\6prova\sensor.h
+	<stdio.h>
+
+1731956592 source:c:\users\aluno\documents\fernando\exemplospe2024\6prova\sensor.c
+	"sensor.h"
+
