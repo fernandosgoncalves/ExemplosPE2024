@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1733160174 source:c:\users\aluno\documents\fernando\exemplospe2024\biblioteca\livro.c
+	<stdio.h>
+	"livro.h"
+
+1733159820 c:\users\aluno\documents\fernando\exemplospe2024\biblioteca\livro.h
+
+1733161103 source:c:\users\aluno\documents\fernando\exemplospe2024\biblioteca\main.c
+	<stdio.h>
+	<stdlib.h>
+	"livro.h"
+
